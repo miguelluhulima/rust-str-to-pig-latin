@@ -4,6 +4,7 @@ fn main() {
     println!("Insert a sentence:");
 
     let mut text = String::new();
+    let mut final_text = String::new();
 
     io::stdin()
         .read_line(&mut text)
@@ -12,8 +13,9 @@ fn main() {
     println!("Converted string:");
 
     for word in text.split_whitespace() {
-        pigify(word);
+        final_text.push_str(&pigify(word));
     }
+    print!("{}", final_text);
 }
 
 fn pigify(word: &str) -> String {
@@ -27,7 +29,7 @@ fn pigify(word: &str) -> String {
             break;
         }
     }
-    output
+    output + " "
 }
 
 fn is_vowel(character: char) -> bool {
